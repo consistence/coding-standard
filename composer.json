@@ -1,0 +1,13 @@
+{
+	"name": "consistence/coding-standard",
+	"description": "Consistence - Coding Standard - PHP Code Sniffer rules",
+	"keywords": ["coding standard", "cs", "coding", "standard", "ruleset", "phpcs", "PHPCodeSniffer", "CodeSniffer", "sniffer"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Vašek Purchart",
+			"email": "me@vasekpurchart.cz",
+			"homepage": "http://vasekpurchart.cz"
+		}
+	]
+}
