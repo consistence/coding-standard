@@ -17,6 +17,7 @@
 	"require-dev": {
 		"jakub-onderka/php-console-highlighter": "0.3.1",
 		"jakub-onderka/php-parallel-lint": "0.7",
+		"phing/phing": "2.10.1",
 		"phpunit/phpunit": "4.6.4"
 	},
 	"autoload": {
