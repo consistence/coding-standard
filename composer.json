@@ -16,7 +16,24 @@
 	},
 	"require-dev": {
 		"jakub-onderka/php-console-highlighter": "0.3.1",
-		"jakub-onderka/php-parallel-lint": "0.7"
+		"jakub-onderka/php-parallel-lint": "0.7",
+		"phpunit/phpunit": "4.6.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"Consistence\\": [ "Consistence" ]
+		},
+		"classmap": [
+			"Consistence"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Consistence\\": [ "tests" ]
+		},
+		"classmap": [
+			"tests"
+		]
 	},
 	"config": {
 		"bin-dir": "bin"
