@@ -20,3 +20,6 @@ install:
 
 script:
   - bin/phing ci-build
+
+after_success:
+  - composer require satooshi/php-coveralls dev-master#2fbf803 --no-interaction --prefer-source --no-progress --ignore-platform-reqs && bin/coveralls --verbose --config build/coveralls.yml || true
