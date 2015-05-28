@@ -27,17 +27,6 @@
 		tests
 	"/>
 
-	<target name="composer">
-		<exec
-			executable="${path.composer.executable}"
-			logoutput="true"
-			passthru="true"
-			checkreturn="true"
-		>
-			<arg value="install"/>
-		</exec>
-	</target>
-
 	<target name="ci-build" depends="
 		phplint,
 		cs,
@@ -56,6 +45,17 @@
 			<arg value="--coverage-clover"/>
 			<arg value="${path.tests.coverage.clover}"/>
 			<arg path="${path.tests}"/>
+		</exec>
+	</target>
+
+	<target name="composer">
+		<exec
+			executable="${path.composer.executable}"
+			logoutput="true"
+			passthru="true"
+			checkreturn="true"
+		>
+			<arg value="install"/>
 		</exec>
 	</target>
 
