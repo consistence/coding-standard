@@ -22,6 +22,6 @@ script:
   - bin/phing ci-build
 
 after_success:
-  - composer require satooshi/php-coveralls dev-master#2fbf803 --no-interaction --prefer-source --no-progress --ignore-platform-reqs
+  - composer require symfony/yaml 2.6 satooshi/php-coveralls dev-master#2fbf803 --no-interaction --prefer-source --no-progress --ignore-platform-reqs
     && bin/coveralls --verbose --config build/coveralls.yml
     || true
