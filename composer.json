@@ -15,10 +15,10 @@
 		"squizlabs/php_codesniffer": "~2.3.2"
 	},
 	"require-dev": {
-		"jakub-onderka/php-console-highlighter": "0.3.1",
-		"jakub-onderka/php-parallel-lint": "0.7",
-		"phing/phing": "2.10.1",
-		"phpunit/phpunit": "4.6.4"
+		"jakub-onderka/php-console-highlighter": "0.3.2",
+		"jakub-onderka/php-parallel-lint": "0.9",
+		"phing/phing": "2.11.0",
+		"phpunit/phpunit": "4.7.3"
 	},
 	"autoload": {
 		"psr-4": {
