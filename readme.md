@@ -3,7 +3,7 @@ Consistence Coding Standard
 
 > **Complete standard is described in a [separate document](consistence-coding-standard.md)**.
 
-This is a custom coding standard which is used by all Consistence projects. It is also suitable to be used with any other project or as a foundation for your own standard.
+This is a custom coding standard, which is used by all Consistence projects. It is also suitable to be used with any other project or as a foundation for your own standard.
 
 The main objectives of this standard are:
 
@@ -30,7 +30,7 @@ Coding Standard document should be considered the source of truth and main objec
 * `MINOR` version will be incremented if new sniffs are implemented to check for existing described rules.
 * `PATCH` version will be incremented for bug fixing - fixing a bug is considered everything which does not conform to the document - this may even lead to (temporarily) disabling an existing sniff - or part of it, until a better check is available or it is properly fixed.
 
-None of the implementation of the automatic checks (both custom sniffs and the ruleset.xml file) are not subject to the SemVer and may change over time to accommodate changes in PHP_CodeSniffer and provided default sniffs, which are used also by this standard.
+The implementation of the automatic checks (both custom sniffs and the ruleset.xml file) are not subject to the SemVer and may change over time to accommodate changes in PHP_CodeSniffer and provided default sniffs, which are used also by this standard.
 
 Recommended dependency on this package is on `MINOR` version (e.g. `~1.0.0`), which means effectively:
 * No new rules will be added.

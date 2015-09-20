@@ -9,7 +9,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
 
 	/**
-	 * @param string $name
+	 * @param string|null $name
 	 * @param mixed[] $data
 	 * @param string $dataName
 	 */
@@ -120,7 +120,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 	 * @param string|null $message
 	 * @return boolean
 	 */
-	private function hasError(array $errorsForLine, $code, $message = null)
+	private function hasError(array $errorsForLine, $code, $message)
 	{
 		foreach ($errorsForLine as $errorsForPosition) {
 			foreach ($errorsForPosition as $error) {

@@ -559,7 +559,7 @@ interface Exception extends \Consistence\Exception
 * Implemented as classes, class name describes the use-case and should be very specific.
 * Use-case exception implements "namespace exception" of the namespace where it is defined.
   * It may implement any other interfaces.
-* Inheritance is used used for implementation purposes - such as `Consistence\PhpException`, where `$code` argument is skipped.
+* Inheritance is used for implementation purposes - such as `Consistence\PhpException`, where `$code` argument is skipped.
 * Constructor requires only arguments, which are needed, the rest of the message is composed in the constructor.
   * All exceptions should support exceptions chaining (allow optional `\Exception` as last argument).
   * Arguments should be stored in private properties and available via public methods, so that exception handling may use this data.
