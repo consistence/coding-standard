@@ -38,10 +38,9 @@
 		<exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/><!-- we want to put first expression of multiline condition on next line -->
 		<exclude name="PSR2.ControlStructures.SwitchDeclaration.caseIndent"/><!-- checked by more generic Generic.WhiteSpace.ScopeIndent.Incorrect -->
 		<exclude name="PSR2.ControlStructures.SwitchDeclaration.defaultIndent"/><!-- checked by more generic Generic.WhiteSpace.ScopeIndent.Incorrect -->
-		<exclude name="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket"/><!-- we want to allow comments -->
 		<exclude name="Squiz.Functions.LowercaseFunctionKeywords"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
 		<exclude name="Squiz.ControlStructures.LowercaseDeclaration"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
-		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.ContentAfterBrace"/><!-- we want to allow comments -->
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.FirstParamSpacing"/><!-- we want to allow comments -->
 		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/><!-- clashes with OpeningFunctionBraceBsdAllman -->
 	</rule>
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
