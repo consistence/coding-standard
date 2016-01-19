@@ -28,6 +28,6 @@ script:
   - bin/phing ci-build
 
 after_success:
-  - composer require symfony/yaml 2.6 satooshi/php-coveralls dev-master#2fbf803 --no-interaction --prefer-source --no-progress --ignore-platform-reqs
-    && bin/coveralls --verbose --config build/coveralls.yml
+  - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.0/coveralls.phar
+    && php coveralls.phar --verbose --config build/coveralls.yml
     || true
