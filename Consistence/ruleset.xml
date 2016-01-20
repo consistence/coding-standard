@@ -40,7 +40,6 @@
 		<exclude name="PSR2.ControlStructures.SwitchDeclaration.defaultIndent"/><!-- checked by more generic Generic.WhiteSpace.ScopeIndent.Incorrect -->
 		<exclude name="Squiz.Functions.LowercaseFunctionKeywords"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
 		<exclude name="Squiz.ControlStructures.LowercaseDeclaration"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
-		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.FirstParamSpacing"/><!-- we want to allow comments -->
 		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/><!-- clashes with OpeningFunctionBraceBsdAllman -->
 	</rule>
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
@@ -73,6 +72,7 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/><!-- void type is not used -->
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/><!-- comments don't have to be sentences -->
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentNotCapital"/><!-- comments don't have to be sentences -->
+		<exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing"/><!-- works only for code requiring PHP 7 code or better -->
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName"/><!-- we don't want spacing with alignment -->
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/><!-- we don't want spacing with alignment -->
 		<exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/><!-- @throws are forbidden -->
