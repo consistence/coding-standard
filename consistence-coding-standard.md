@@ -332,8 +332,8 @@ class X
 {
 
 	/*
-	 * @param Foo $a
-	 * @param Foo|null $b
+	 * @param \Foo $a
+	 * @param \Foo|null $b
 	 * @param string $c
 	 * @param string|null $d
 	 * @param string $e
@@ -353,7 +353,7 @@ class X
 
 }
 ```
-* Variadic argument is written in this format: `Foo ...$foo`.
+* Variadic argument is written in this format: `@param \Foo ...$foo`.
 
 ### Anonymous functions
 
@@ -482,7 +482,7 @@ $lorem
 new Foo();
 ```
 * There is one space after type cast and no space inside the parentheses.
-* For increments and decrements respective operators `++`/`--` are used instead of "manual" addition/substraction.
+* For increments and decrements respective operators `++`/`--` are used instead of "manual" addition/subtraction.
 * All static symbols should be accessed only with `::`, never using `$this`.
 * `echo`, `print`, ... allowing both `echo('...')` and `echo ''` syntax are always used without parentheses and with one space after the keyword.
 
@@ -798,7 +798,7 @@ private $foo;
   * Examples:
     * If a method has no arguments, nor return value and no description (and other annotations) it is omitted.
     * If a method has arguments type hinted with types (classes, interfaces) and no return value it is omitted.
-    * If a method has a argument without typehint, PHPDoc is present.
+    * If a method has an argument without typehint, PHPDoc is present.
     * If a method has an array argument, PHPDoc is present.
     * If a method has return value, PHPDoc is present.
       * This is valid only until return type hints will be introduced in PHP 7.
