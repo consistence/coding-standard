@@ -41,9 +41,9 @@
 		<exclude name="Squiz.Functions.LowercaseFunctionKeywords"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
 		<exclude name="Squiz.ControlStructures.LowercaseDeclaration"/><!-- checked by more generic Generic.PHP.LowerCaseKeyword -->
 		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/><!-- clashes with OpeningFunctionBraceBsdAllman -->
-		<exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen"/><!-- we want to allow empty line in control structure f.e. in catch blocks, where it can improve readability -->
+		<exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen"/><!-- we want to allow empty line in control structure e.g. in catch blocks, where it can improve readability -->
 		<exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpenBrace"/><!-- we want to put first expression of multiline condition on next line -->
-		<exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose"/><!-- we want to allow empty line in control structure f.e. in try blocks, where it can improve readability -->
+		<exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose"/><!-- we want to allow empty line in control structure e.g. in try blocks, where it can improve readability -->
 	</rule>
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
 	<rule ref="Squiz.Arrays.ArrayDeclaration">
