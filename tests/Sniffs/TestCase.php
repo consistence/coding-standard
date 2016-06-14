@@ -5,7 +5,7 @@ namespace Consistence\Sniffs;
 use PHP_CodeSniffer;
 use PHP_CodeSniffer_File;
 
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
 
 	/**
