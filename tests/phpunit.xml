@@ -8,6 +8,8 @@
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutTestsThatDoNotTestAnything="true"
 	beStrictAboutTodoAnnotatedTests="true"
+	failOnRisky="true"
+	failOnWarning="true"
 >
 	<logging>
 		<log
