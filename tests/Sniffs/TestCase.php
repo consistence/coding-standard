@@ -29,7 +29,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 			'-s', // showSources must be on, so that errors are recorded
 		]);
 
-		$codeSniffer->registerSniffs([$this->getSniffPath()], []);
+		$codeSniffer->registerSniffs([$this->getSniffPath()], [], []);
 		$codeSniffer->populateTokenListeners();
 
 		return $codeSniffer->processFile($filePath);
@@ -153,7 +153,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 				PHP_EOL
 			)
 		);
-
 	}
 
 	/**
