@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Consistence\Sniffs;
 
 use PHP_CodeSniffer;
@@ -13,16 +15,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param mixed[] $data
 	 * @param string $dataName
 	 */
-	public function __construct($name = null, array $data = [], $dataName = '')
+	public function __construct(string $name = null, array $data = [], string $dataName = '')
 	{
 		parent::__construct($name, $data, $dataName);
 	}
 
-	/**
-	 * @param string $filePath
-	 * @return \PHP_CodeSniffer_File
-	 */
-	protected function checkFile($filePath)
+	protected function checkFile(string $filePath): PHP_CodeSniffer_File
 	{
 		$codeSniffer = new PHP_CodeSniffer();
 		$codeSniffer->cli->setCommandLineValues([
@@ -35,10 +33,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return $codeSniffer->processFile($filePath);
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getSniffName()
+	protected function getSniffName(): string
 	{
 		return preg_replace(
 			[
@@ -55,10 +50,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	private function getSniffPath()
+	private function getSniffPath(): string
 	{
 		$path = preg_replace(
 			[
@@ -77,10 +69,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return realpath($path);
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getSniffClassName()
+	protected function getSniffClassName(): string
 	{
 		return substr(get_class($this), 0, -strlen('Test'));
 	}
@@ -91,7 +80,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param string $code code used inside sniff to indicate error type
 	 * @param string|null $message match part of text in error message
 	 */
-	protected function assertSniffError(PHP_CodeSniffer_File $resultFile, $line, $code, $message = null)
+	protected function assertSniffError(PHP_CodeSniffer_File $resultFile, int $line, string $code, string $message = null)
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertTrue(
@@ -120,7 +109,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param string|null $message
 	 * @return boolean
 	 */
-	private function hasError(array $errorsForLine, $code, $message)
+	private function hasError(array $errorsForLine, string $code, string $message = null): bool
 	{
 		foreach ($errorsForLine as $errorsForPosition) {
 			foreach ($errorsForPosition as $error) {
@@ -136,11 +125,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return false;
 	}
 
-	/**
-	 * @param \PHP_CodeSniffer_File $resultFile
-	 * @param integer $line
-	 */
-	protected function assertNoSniffError(PHP_CodeSniffer_File $resultFile, $line)
+	protected function assertNoSniffError(PHP_CodeSniffer_File $resultFile, int $line)
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertFalse(
@@ -160,7 +145,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param integer $line
 	 * @return string in format <source>: <message>
 	 */
-	private function getFormattedErrorsOnLine(array $errorsForFile, $line)
+	private function getFormattedErrorsOnLine(array $errorsForFile, int $line): string
 	{
 		if (!isset($errorsForFile[$line])) {
 			return '';
