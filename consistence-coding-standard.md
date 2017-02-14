@@ -72,6 +72,17 @@ PHP files
 * Long opening tags are used (always `<?php`, never `<?`).
 * There is one empty line after the line with the open tag.
 * File either declares new symbols (classes, functions, constants, etc.) and causes no other side effects, or executes logic with side effects, but should not do both.
+* Uses strict typing by enabling `declare(strict_types = 1);`.
+  * This declaration is placed on a separate line after the opening tag and before other content of the file. There is one empty line before and after the declaration.
+  * There is one space on each side of the `=` operator.
+
+```php
+<?php
+
+declare(strict_types = 1);
+
+namespace Consistence;
+```
 
 Strings
 -------
@@ -124,6 +135,7 @@ Arrays
 
 * Declaration on multiple lines is preferred, associative arrays (with keys) are always written on multiple lines.
 * Short array syntax is used (`[`, `]`) instead of the `array()` language construct.
+* If possible (PHP 7.1+), short array destructuring syntax (`[$a, $b, $c] = $array;`) is used instead of the `list()` language construct.
 
 Namespaces
 ----------
@@ -232,7 +244,7 @@ class Foo
 		// ...
 	}
 
-	public static function fromString($string)
+	public static function fromString(string $string)
 	{
 		// ...
 	}
@@ -264,6 +276,7 @@ Constants
 
 * Constant names are written in `UPPER_CASE`.
 * Constants are defined only inside classes using `const`, global constants are never defined.
+* If possible (PHP 7.1+), constants have explicitly declared visibility with `private`, `protected` or `public`.
 * If there are more constants, that "belong together", empty lines between them may be omitted.
 
 ```php
@@ -294,7 +307,8 @@ Functions
 
 ### Argument list
 
-* There should be type hint defined whenever possible.
+* There should be type hint defined whenever possible (including scalar type hints).
+  * If possible (PHP 7.1+), nullable types (`?string`) are used to allow passing null to a type hinted argument. 
 * There is no space after the opening parenthesis, and there is no space before the closing parenthesis.
 * Arguments both in function declaration and in function call are separated with comma, followed by one space (`, `).
 
@@ -304,7 +318,7 @@ Functions
 class X
 {
 
-	public function __construct(Foo $foo, Bar $bar)
+	public function __construct(Foo $foo, string $string)
 	{
 		// ...
 	}
@@ -323,7 +337,7 @@ class X
 
 	public function __construct(
 		Foo $foo,
-		Bar $bar
+		string $string
 	)
 	{
 		// ...
@@ -333,33 +347,64 @@ class X
 
 new X(
 	$foo,
-	$bar
+	$string
 );
 ```
 
-* Default argument values are used only when needed - to express optional argument (only at the end of the list) or to allow passing null to a type hinted argument.
+* Default argument values are used only when needed to either express optional argument (only at the end of the list) or to allow passing null to a type hinted argument.
+  * If possible (PHP 7.1+), nullable types (`?string`) are used to allow passing null to a type hinted argument and therefore default arguments are used only for optional arguments.
+  * For scalar arguments default arguments are used only for optional arguments, not to allow passing nulls (see detailed example below).
 
 ```php
 <?php
+
+// for PHP 7.0
 
 class X
 {
 
 	/**
-	 * @param \Foo $a
-	 * @param \Foo|null $b
-	 * @param string $c
-	 * @param string|null $d
-	 * @param string $e
-	 * @param string|null $f
+	 * @param \Foo $a required type argument
+	 * @param \Foo|null $b required argument, but nullable type needed
+	 * @param string $c required scalar argument
+	 * @param string|null $d required argument with nullable scalar
+	 * @param string $e optional nullable scalar argument
+	 * @param string|null $f optional nullable scalar argument
 	 */
 	public function __construct(
 		Foo $a,
 		Foo $b = null,
-		$c,
+		string $c,
 		$d,
-		$e = '',
-		$f = null
+		string $e = '',
+		string $f = null
+	)
+	{
+		// ...
+	}
+
+}
+
+// or with PHP 7.1+
+
+class X
+{
+
+	/**
+	 * @param \Foo $a required type argument
+	 * @param \Foo|null $b required argument, but nullable type needed
+	 * @param string $c required scalar argument
+	 * @param string|null $d required argument with nullable scalar
+	 * @param string $e optional nullable scalar argument
+	 * @param string|null $f optional nullable scalar argument
+	 */
+	public function __construct(
+		Foo $a,
+		?Foo $b,
+		string $c,
+		?string $d,
+		string $e = '',
+		?string $f = null
 	)
 	{
 		// ...
@@ -369,6 +414,42 @@ class X
 ```
 
 * Variadic argument is written in this format: `@param \Foo ...$foo`.
+
+### Return type
+
+* There should be type hint defined whenever possible (including scalar type hints).
+  * If possible (PHP 7.1+), nullable types (`?string`) are used to allow returning null.
+* There is no space after the closing parenthesis, colon immediately follows and then there is one space between the colon and the type.
+
+```php
+<?php
+
+class X
+{
+
+	public function getFoo(): Foo
+	{
+		// ...
+	}
+
+}
+```
+
+* If possible (PHP 7.1+), when there is nothing to return, `void` return type must be specified.
+
+```php
+<?php
+
+class X
+{
+
+	public function process(Foo $foo): void
+	{
+		$foo->bar();
+	}
+
+}
+```
 
 ### Anonymous functions
 
@@ -562,13 +643,14 @@ Exceptions
 * Every namespace has its "own" namespace exception.
   * This exception is an interface, so that it cannot be thrown.
   * It extends "namespace exception" of parent namespace.
+  * It extends the `\Throwable` interface (either directly or through a parent interface).
 
 ```php
 <?php
 
 namespace Consistence;
 
-interface Exception
+interface Exception extends \Throwable
 {
 
 }
@@ -592,7 +674,7 @@ interface Exception extends \Consistence\Exception
   * It may implement any other interfaces.
 * Inheritance is used for implementation purposes - such as `Consistence\PhpException`, where `$code` argument is skipped.
 * Constructor requires only arguments, which are needed, the rest of the message is composed in the constructor.
-  * All exceptions should support exceptions chaining (allow optional `\Exception` as last argument).
+  * All exceptions should support exceptions chaining (allow optional `\Throwable` as last argument).
   * Arguments should be stored in private properties and available via public methods, so that exception handling may use this data.
 
 ```php
@@ -606,20 +688,13 @@ class LoremException extends \Consistence\PhpException implements \Consistence\F
 	/** @var string */
 	private $lorem;
 
-	/**
-	 * @param string $lorem
-	 * @param \Exception|null $previous
-	 */
-	public function __construct($lorem, \Exception $previous = null)
+	public function __construct(string $lorem, \Throwable $previous = null)
 	{
 		parent::__construct(sprintf('%s ipsum dolor sit amet', $lorem), $previous);
 		$this->lorem = $lorem;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getLorem()
+	public function getLorem(): string
 	{
 		return $this->lorem;
 	}
@@ -659,7 +734,7 @@ Structure for types and methods:
  * @throws \MyException\BarException
  * @throws \MyException\FooException
  */
-public function myMethod($foo, $bar);
+public function myMethod(string $foo, int $bar): bool;
 ```
 
 Structure for properties and constants:
@@ -769,6 +844,7 @@ Multiple different types are separated with `|`.
 ```php
 <?php
 
+use DateTime;
 use DateTimeImmutable;
 
 /**
@@ -777,7 +853,7 @@ use DateTimeImmutable;
  * @param integer|null $interval
  * @return \DateTime
  */
-public function myMethod(DateTimeImmutable $date, array $events, $interval = null)
+public function myMethod(DateTimeImmutable $date, array $events, int $interval = null): DateTime
 {
 	// ...
 }
@@ -798,7 +874,7 @@ use DateTime;
  * @param integer $bar optional description
  * @param \DateTime ...$dates optional description
  */
-public function myMethod($foo, $bar, DateTime ...$dates)
+public function myMethod(string $foo, int $bar, DateTime ...$dates)
 {
 	// ...
 }
