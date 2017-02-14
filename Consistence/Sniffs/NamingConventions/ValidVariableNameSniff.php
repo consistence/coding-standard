@@ -41,7 +41,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 			return; // skip MyClass::$variable, there might be no control over the declaration
 		}
 
-		if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false) {
+		if (!PHP_CodeSniffer::isCamelCaps($varName, false, true, false)) {
 			$error = 'Variable "%s" is not in valid camel caps format';
 			$data = [$varName];
 			$file->addError($error, $stackPointer, self::CODE_CAMEL_CAPS, $data);

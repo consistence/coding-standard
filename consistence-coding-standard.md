@@ -6,6 +6,7 @@ General naming conventions
 
 * Avoid abbreviations, use them only if long name would be less readable.
 * For 2-letter shortcuts use `UPPERCASE`, for longer `PascalCase`.
+
 ```php
 <?php
 
@@ -24,6 +25,7 @@ General formatting conventions
 * There is no trailing whitespace.
 * If there is a list of information, where ordering has no semantic meaning, the list is sorted alphabetically.
   * Sorting concatenated words (e.g. `PascalCase`) takes into account original words:
+
 ```php
 <?php
 
@@ -38,6 +40,7 @@ use Foo22;
 use FooBaz;
 use Foobar;
 ```
+
 * If indentation of nested structures is needed (such as arrays or function calls), the opening of the structure should be left on the original line, followed by a nested indented content of the structure, closing of the structure should return the indentation to the original level and be on next line, followed by the rest of the code (on the same line).
 
 ```php
@@ -92,23 +95,28 @@ sprintf('%s/%s', $dir, $fileName);
 $foo . $bar;
 
 ```
+
 ```sql
 'SELECT `id`, `name` FROM `people`'
 . 'WHERE `role` = 1'
 . 'ORDER BY `name` ASC';
 ```
+
 * Heredoc and nowdoc string syntax is never used.
 
 Arrays
 ------
 
 * If complete array is declared on one line, all the values are separated with a comma, followed by one space (`, `).
+
 ```php
 <?php
 
 [1, 2, 3, 'test'];
 ```
+
 * If declaration is split on multiple lines, it follows general formatting rules and there is a comma after the last value.
+
 ```php
 <?php
 
@@ -117,6 +125,7 @@ Arrays
 	'ipsum',
 ];
 ```
+
 * Declaration on multiple lines is preferred, associative arrays (with keys) are always written on multiple lines.
 * Short array syntax is used (`[`, `]`) instead of the `array()` language construct.
 
@@ -137,6 +146,7 @@ Namespaces
   * Exceptions to this rule:
     * Exceptions are always referenced with fully qualified name (FQN).
     * Types in `extends` and `implements` are also referenced with FQN.
+
 ```php
 <?php
 
@@ -165,7 +175,7 @@ Types
 * Opening brace and closing brace of type are always on a separate line.
 * All parts of types are indented with one tab.
 * Only one type per file is defined, name of this file has the same name as the type.
-* Parts in types are in the following order:
+* Parts in types are declared in the following order:
   1. constants,
   2. properties,
   3. constructor,
@@ -176,6 +186,7 @@ Types
 * Multiple types referenced in `implements` are separated with comma and one space and are ordered alphabetically.
 * Should the type declaration line be too long, `extends` and `implements` may be written on next lines, indented with one tab.
   * Multiple types referenced in `implements` are written on separate lines (without space after the comma).
+
 ```php
 class Foo extends \Bar implements \Bax, \Baz
 {
@@ -193,6 +204,7 @@ class Foo
 
 }
 ```
+
 ```php
 <?php
 
@@ -205,6 +217,7 @@ class Lorem
 
 }
 ```
+
 * Types referenced in code are always referenced using `Foo::class` syntax, never using a string.
 * If the referenced type in a static access is the "current" one, `self`/`static` is used instead of type name.
 
@@ -288,6 +301,7 @@ Functions
 * There should be type hint defined whenever possible.
 * There is no space after the opening parenthesis, and there is no space before the closing parenthesis.
 * Arguments both in function declaration and in function call are separated with comma, followed by one space (`, `).
+
 ```php
 <?php
 
@@ -301,8 +315,10 @@ class X
 
 }
 ```
+
 * Function declaration and call with arguments on multiple lines:
   * There is only one argument per line.
+
 ```php
 <?php
 
@@ -324,14 +340,16 @@ new X(
 	$bar
 );
 ```
+
 * Default argument values are used only when needed - to express optional argument (only at the end of the list) or to allow passing null to a type hinted argument.
+
 ```php
 <?php
 
 class X
 {
 
-	/*
+	/**
 	 * @param \Foo $a
 	 * @param \Foo|null $b
 	 * @param string $c
@@ -353,6 +371,7 @@ class X
 
 }
 ```
+
 * Variadic argument is written in this format: `@param \Foo ...$foo`.
 
 ### Anonymous functions
@@ -360,6 +379,7 @@ class X
 * There is a space between the `function` keyword and the opening parenthesis.
 * Opening brace is NOT placed on the next line.
 * There is one space before and after the `use` keyword.
+
 ```php
 <?php
 
@@ -376,6 +396,7 @@ array_walk($foo, function (Item $item) use ($bar) {
   2. `private`/`protected`/`public`,
   3. `static`
 * Constructor is always defined with `__construct` name, never using the old PHP behavior - with name same as class name.
+
 ```php
 <?php
 
@@ -405,6 +426,7 @@ Control structures
 * `elseif` is used instead of `else if`.
 * `case` statements in `switch` are indented with one tab, and their content on following lines again with another tab.
 * `case` statements in `switch` end with a colon `:`.
+
 ```php
 <?php
 
@@ -429,6 +451,7 @@ switch ($foo) {
 
 }
 ```
+
 * In `switch`, there must be a comment such as `// no break` when fall-through is intentional in a non-empty case body.
 * Empty bodies of control structures are forbidden.
   * Exception is `catch`, but there must be a comment explaining situation.
@@ -438,6 +461,7 @@ Expressions
 
 * After all operators, there is one space. Before operators, there is one space too, unless it is on the beginning of a line.
 * Short type names are used in code (`int`, `bool`). This also applies to PHP functions which offer both variants.
+
 ```php
 <?php
 
@@ -445,12 +469,14 @@ if (!is_int($foo)) {
 	return (int) $foo;
 }
 ```
+
 * Logical operators `&&` and `||` are always used instead of `and` and `or`.
 * All keywords are lowercase, as well as `true`, `false` and `null`.
 * Strict comparisons are used by default (`===`), if there is need for `==`, usually a comment should be given explaining situation.
   * Magic PHP type conversions should be avoided - WRONG: `($foo)`, CORRECT: `($foo !== null)` - only expressions already containing boolean values should be written in `($foo)` form.
 * [Yoda conditions](http://en.wikipedia.org/wiki/Yoda_conditions) should not be used.
 * If expression needs to be written on multiple lines, operators belong on the beginning of the line.
+
 ```php
 <?php
 
@@ -461,10 +487,12 @@ if (
 	// ...
 }
 ```
+
 * There is always only one statement per line.
 * One blank line may be used to separate other statements.
 * There is one empty line before line with `return` statement, unless the current code block has less than four lines, then it does not have to be there.
 * If there are multiple method calls in a row and it is needed to write this on multiple lines, all the method calls are indented (including the first one).
+
 ```php
 <?php
 
@@ -474,13 +502,16 @@ $lorem
 	->sit()
 	->amet();
 ```
+
 * Decimal number notation should be used in most cases, unless needed explicitly for clarification.
 * Parentheses in `new` statements should be always present, even if there are no arguments for constructor.
+
 ```php
 <?php
 
 new Foo();
 ```
+
 * There is one space after type cast and no space inside the parentheses.
 * For increments and decrements respective operators `++`/`--` are used instead of "manual" addition/subtraction.
 * All static symbols should be accessed only with `::`, never using `$this`.
@@ -493,6 +524,7 @@ Closures and callables
 * Closures are invoked using `$closure()` instead of using functions.
   * `call_user_func` should never be needed.
   * `call_user_func_array` is not needed since PHP 5.6 - argument unpacking was introduced.
+
 ```php
 <?php
 
@@ -507,6 +539,7 @@ foo('foo', function (Bar $bar) {
 	// ...
 });
 ```
+
 ```php
 <?php
 
@@ -533,6 +566,7 @@ Exceptions
 * Every namespace has its "own" namespace exception.
   * This exception is an interface, so that it cannot be thrown.
   * It extends "namespace exception" of parent namespace.
+
 ```php
 <?php
 
@@ -543,6 +577,7 @@ interface Exception
 
 }
 ```
+
 ```php
 <?php
 
@@ -563,6 +598,7 @@ interface Exception extends \Consistence\Exception
 * Constructor requires only arguments, which are needed, the rest of the message is composed in the constructor.
   * All exceptions should support exceptions chaining (allow optional `\Exception` as last argument).
   * Arguments should be stored in private properties and available via public methods, so that exception handling may use this data.
+
 ```php
 <?php
 
@@ -606,6 +642,7 @@ PHPDoc
 ------
 
 Structure for types and methods:
+
 ```php
 <?php
 
@@ -628,7 +665,9 @@ Structure for types and methods:
  */
 public function myMethod($foo, $bar);
 ```
+
 Structure for properties and constants:
+
 ```php
 <?php
 
@@ -730,13 +769,14 @@ Multiple different types are separated with `|`.
 
 * FQN with a leading backslash.
 * If the referenced type is the "current" one, `self`/`static` is used instead of type name.
+
 ```php
 <?php
 
 use DateTimeImmutable;
 
 /**
- * @param \DateTimeImmutable $date calender date
+ * @param \DateTimeImmutable $date calendar date
  * @param string[] $events
  * @param integer|null $interval
  * @return \DateTime
@@ -751,6 +791,7 @@ public function myMethod(DateTimeImmutable $date, array $events, $interval = nul
 
 * For every method argument, there is both type and name.
 * Annotations are in the same order as defined in the argument list.
+
 ```php
 <?php
 
@@ -774,6 +815,7 @@ public function myMethod($foo, $bar, DateTime ...$dates)
 ### @var
 
 * If the `@var` annotation is the only annotation and there is no long description in the PHPDoc, then one-line format is used:
+
 ```php
 <?php
 
