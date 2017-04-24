@@ -12,7 +12,8 @@
 	],
 	"require": {
 		"php": "~7.0",
-		"squizlabs/php_codesniffer": "~2.8.0"
+		"squizlabs/php_codesniffer": "~2.8.0",
+		"slevomat/coding-standard": "~2.3"
 	},
 	"require-dev": {
 		"jakub-onderka/php-console-highlighter": "0.3.2",
