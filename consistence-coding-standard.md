@@ -29,16 +29,12 @@ General formatting conventions
 ```php
 <?php
 
-use Foo;
-use Foo\Bar;
-use Foo_Baz;
-use Foo_bar;
-use Foo1;
-use Foo2;
-use Foo11;
-use Foo22;
-use FooBaz;
-use Foobar;
+use LogAware;
+use LogFactory;
+use LogLevel;
+use LogStandard;
+use LogableTrait;
+use LoggerInterface;
 ```
 
 * If indentation of nested structures is needed (such as arrays or function calls), the opening of the structure should be left on the original line, followed by a nested indented content of the structure, closing of the structure should return the indentation to the original level and be on next line, followed by the rest of the code (on the same line).
