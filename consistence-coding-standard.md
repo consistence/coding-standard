@@ -694,8 +694,8 @@ Structure for types and methods:
  * Application annotations (optional)
  *
  * @param string $foo
- * @param integer $bar
- * @return boolean
+ * @param int $bar
+ * @return bool
  * @throws \MyException\BarException
  * @throws \MyException\FooException
  */
@@ -776,8 +776,8 @@ private $foo;
 
 List of allowed types (long variants are used):
 
-* `integer`
-* `boolean`
+* `int`
+* `bool`
 * `string`
 * `float`
 * `double`
@@ -815,7 +815,7 @@ use DateTimeImmutable;
 /**
  * @param \DateTimeImmutable $date calendar date
  * @param string[] $events
- * @param integer|null $interval
+ * @param int|null $interval
  * @return \DateTime
  */
 public function myMethod(DateTimeImmutable $date, array $events, int $interval = null): DateTime
@@ -836,7 +836,7 @@ use DateTime;
 
 /**
  * @param string $foo optional description
- * @param integer $bar optional description
+ * @param int $bar optional description
  * @param \DateTime ...$dates optional description
  */
 public function myMethod(string $foo, int $bar, DateTime ...$dates)

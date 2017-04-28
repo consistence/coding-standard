@@ -67,6 +67,7 @@
 	<rule ref="Squiz.Commenting.EmptyCatchComment"/>
 	<rule ref="Squiz.Commenting.FunctionComment">
 		<exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/><!-- @throws are forbidden -->
+		<exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- requires long boolean and integer parameters -->
 		<exclude name="Squiz.Commenting.FunctionComment.IncorrectTypeHint"/><!-- collection syntax such as string[] is not supported -->
 		<exclude name="Squiz.Commenting.FunctionComment.InvalidReturn"/><!-- enforces incorrect types -->
 		<exclude name="Squiz.Commenting.FunctionComment.InvalidReturnNotVoid"/><!-- is not able to detect return types such as string|null as correct -->
@@ -197,6 +198,7 @@
 			<property name="newlinesCountBetweenOpenTagAndDeclare" value="2"/>
 		</properties>
 	</rule>
+	<rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing"/>

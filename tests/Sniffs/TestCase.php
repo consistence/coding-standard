@@ -76,7 +76,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
 	/**
 	 * @param \PHP_CodeSniffer_File $resultFile
-	 * @param integer $line
+	 * @param int $line
 	 * @param string $code code used inside sniff to indicate error type
 	 * @param string|null $message match part of text in error message
 	 */
@@ -107,7 +107,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param mixed[][][] $errorsForLine
 	 * @param string $code
 	 * @param string|null $message
-	 * @return boolean
+	 * @return bool
 	 */
 	private function hasError(array $errorsForLine, string $code, string $message = null): bool
 	{
@@ -142,7 +142,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
 	/**
 	 * @param mixed[][][][] $errorsForFile
-	 * @param integer $line
+	 * @param int $line
 	 * @return string in format <source>: <message>
 	 */
 	private function getFormattedErrorsOnLine(array $errorsForFile, int $line): string

@@ -27,7 +27,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 
 	/**
 	 * @param \PHP_CodeSniffer_File $file
-	 * @param integer $stackPointer position of the double quoted string
+	 * @param int $stackPointer position of the double quoted string
 	 */
 	protected function processVariable(PHP_CodeSniffer_File $file, $stackPointer)
 	{
@@ -54,7 +54,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 	 * @codeCoverageIgnore
 	 *
 	 * @param \PHP_CodeSniffer_File $file
-	 * @param integer $stackPointer position of the double quoted string
+	 * @param int $stackPointer position of the double quoted string
 	 */
 	protected function processMemberVar(PHP_CodeSniffer_File $file, $stackPointer)
 	{
@@ -65,7 +65,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 	 * @codeCoverageIgnore
 	 *
 	 * @param \PHP_CodeSniffer_File $file
-	 * @param integer $stackPointer position of the double quoted string
+	 * @param int $stackPointer position of the double quoted string
 	 */
 	protected function processVariableInString(PHP_CodeSniffer_File $file, $stackPointer)
 	{
