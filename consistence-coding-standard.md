@@ -150,7 +150,6 @@ Namespaces
   * `use` declarations are sorted alphabetically.
   * `use` declarations never begin with backslash (`\`).
   * Imported types should be renamed with `use ... as ...;` if the type name is too common or clashes with current domain.
-  * `use` declarations are grouped (separated by a line from other declarations) by their top-level namespace, all types from global namespace are considered one group.
   * Exceptions to this rule:
     * Exceptions are always referenced with fully qualified name (FQN).
     * Types in `extends`, `implements` and used traits are also referenced with FQN.
