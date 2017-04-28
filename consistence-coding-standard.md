@@ -637,42 +637,8 @@ Exceptions
 
 * Type name always ends with Exception.
 * Exceptions are placed in a separate directory called `exceptions`.
-
-### Namespace exceptions
-
-* Every namespace has its "own" namespace exception.
-  * This exception is an interface, so that it cannot be thrown.
-  * It extends "namespace exception" of parent namespace.
-  * It extends the `\Throwable` interface (either directly or through a parent interface).
-
-```php
-<?php
-
-namespace Consistence;
-
-interface Exception extends \Throwable
-{
-
-}
-```
-
-```php
-<?php
-
-namespace Consistence\Foo;
-
-interface Exception extends \Consistence\Exception
-{
-
-}
-```
-
-### Use-cases
-
-* Implemented as classes, class name describes the use-case and should be very specific.
-* Use-case exception implements "namespace exception" of the namespace where it is defined.
-  * It may implement any other interfaces.
-* Inheritance is used for implementation purposes - such as `Consistence\PhpException`, where `$code` argument is skipped.
+* Class name describes the use-case and should be very specific.
+* Inheritance is used for implementation purposes (not for creating hierarchies) - such as `Consistence\PhpException`, where `$code` argument is skipped.
 * Constructor requires only arguments, which are needed, the rest of the message is composed in the constructor.
   * All exceptions should support exceptions chaining (allow optional `\Throwable` as last argument).
   * Arguments should be stored in private properties and available via public methods, so that exception handling may use this data.
@@ -682,7 +648,7 @@ interface Exception extends \Consistence\Exception
 
 namespace Consistence\Foo;
 
-class LoremException extends \Consistence\PhpException implements \Consistence\Foo\Exception
+class LoremException extends \Consistence\PhpException
 {
 
 	/** @var string */
