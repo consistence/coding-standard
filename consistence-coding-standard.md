@@ -860,6 +860,17 @@ public function myMethod(string $foo, int $bar, DateTime ...$dates)
 private $foo;
 ```
 
+* Inline `@var` is used to define types for variables, where the type is not clear.
+  * Uses docblock comment `/** ... */`.
+  * Type is defined first, followed by variable name.
+
+```php
+<?php
+
+/** @var \Foo $foo optional description */
+$foo = $container->getService('foo');
+```
+
 ### @throws
 
 * For implemented methods `@throws` is never used.
