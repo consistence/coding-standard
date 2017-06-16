@@ -4,10 +4,10 @@ declare(strict_types = 1);
 
 namespace Consistence\Sniffs\NamingConventions;
 
-use PHP_CodeSniffer;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Files\File as PhpCsFile;
+use PHP_CodeSniffer\Util\Common as PhpCsUtil;
 
-class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariableSniff
+class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSniff
 {
 
 	const CODE_CAMEL_CAPS = 'NotCamelCaps';
@@ -26,10 +26,10 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 	];
 
 	/**
-	 * @param \PHP_CodeSniffer_File $file
+	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processVariable(PHP_CodeSniffer_File $file, $stackPointer)
+	protected function processVariable(PhpCsFile $file, $stackPointer)
 	{
 		$tokens = $file->getTokens();
 		$varName = ltrim($tokens[$stackPointer]['content'], '$');
@@ -43,7 +43,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 			return; // skip MyClass::$variable, there might be no control over the declaration
 		}
 
-		if (!PHP_CodeSniffer::isCamelCaps($varName, false, true, false)) {
+		if (!PhpCsUtil::isCamelCaps($varName, false, true, false)) {
 			$error = 'Variable "%s" is not in valid camel caps format';
 			$data = [$varName];
 			$file->addError($error, $stackPointer, self::CODE_CAMEL_CAPS, $data);
@@ -53,10 +53,10 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 	/**
 	 * @codeCoverageIgnore
 	 *
-	 * @param \PHP_CodeSniffer_File $file
+	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processMemberVar(PHP_CodeSniffer_File $file, $stackPointer)
+	protected function processMemberVar(PhpCsFile $file, $stackPointer)
 	{
 		// handled by PSR2.Classes.PropertyDeclaration
 	}
@@ -64,10 +64,10 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer_Standards_AbstractVariable
 	/**
 	 * @codeCoverageIgnore
 	 *
-	 * @param \PHP_CodeSniffer_File $file
+	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processVariableInString(PHP_CodeSniffer_File $file, $stackPointer)
+	protected function processVariableInString(PhpCsFile $file, $stackPointer)
 	{
 		// Consistence standard does not allow variables in strings, handled by Squiz.Strings.DoubleQuoteUsage
 	}

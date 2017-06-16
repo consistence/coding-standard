@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace Consistence\Sniffs;
 
-use PHP_CodeSniffer;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Config as PhpCsConfig;
+use PHP_CodeSniffer\Files\File as PhpCsFile;
+use PHP_CodeSniffer\Files\LocalFile as PhpCsLocalFile;
+use PHP_CodeSniffer\Runner as PhpCsRunner;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -20,17 +22,22 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		parent::__construct($name, $data, $dataName);
 	}
 
-	protected function checkFile(string $filePath): PHP_CodeSniffer_File
+	protected function checkFile(string $filePath): PhpCsFile
 	{
-		$codeSniffer = new PHP_CodeSniffer();
-		$codeSniffer->cli->setCommandLineValues([
+		$codeSniffer = new PhpCsRunner();
+		$codeSniffer->config = new PhpCsConfig([
 			'-s', // showSources must be on, so that errors are recorded
 		]);
 
-		$codeSniffer->registerSniffs([$this->getSniffPath()], [], []);
-		$codeSniffer->populateTokenListeners();
+		$codeSniffer->init();
 
-		return $codeSniffer->processFile($filePath);
+		$codeSniffer->ruleset->sniffs = [$this->getSniffClassName() => $this->getSniffClassName()];
+		$codeSniffer->ruleset->populateTokenListeners();
+
+		$file = new PhpCsLocalFile($filePath, $codeSniffer->ruleset, $codeSniffer->config);
+		$file->process();
+
+		return $file;
 	}
 
 	protected function getSniffName(): string
@@ -50,37 +57,18 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
-	private function getSniffPath(): string
-	{
-		$path = preg_replace(
-			[
-				'~\\\~',
-				'~Consistence~',
-				'~$~',
-			],
-			[
-				'/',
-				__DIR__ . '/../../Consistence',
-				'.php',
-			],
-			$this->getSniffClassName()
-		);
-
-		return realpath($path);
-	}
-
 	protected function getSniffClassName(): string
 	{
 		return substr(get_class($this), 0, -strlen('Test'));
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer_File $resultFile
+	 * @param \PHP_CodeSniffer\Files\File $resultFile
 	 * @param int $line
 	 * @param string $code code used inside sniff to indicate error type
 	 * @param string|null $message match part of text in error message
 	 */
-	protected function assertSniffError(PHP_CodeSniffer_File $resultFile, int $line, string $code, string $message = null)
+	protected function assertSniffError(PhpCsFile $resultFile, int $line, string $code, string $message = null)
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertTrue(
@@ -125,7 +113,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return false;
 	}
 
-	protected function assertNoSniffError(PHP_CodeSniffer_File $resultFile, int $line)
+	protected function assertNoSniffError(PhpCsFile $resultFile, int $line)
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertFalse(

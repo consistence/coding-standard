@@ -4,12 +4,12 @@ declare(strict_types = 1);
 
 namespace Consistence\Sniffs\NamingConventions;
 
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Files\File as PhpCsFile;
 
 class ValidVariableNameSniffTest extends \Consistence\Sniffs\TestCase
 {
 
-	private function getFileReport(): PHP_CodeSniffer_File
+	private function getFileReport(): PhpCsFile
 	{
 		return $this->checkFile(__DIR__ . '/data/FooClass.php');
 	}
