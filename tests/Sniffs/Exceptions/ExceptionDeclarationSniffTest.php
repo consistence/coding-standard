@@ -99,4 +99,47 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 		);
 	}
 
+	public function testExceptionWithConstructorWithoutParametersIsNotChainable()
+	{
+		$resultFile = $this->checkFile(__DIR__ . '/data/ConstructWithoutParametersException.php');
+
+		$this->assertSniffError(
+			$resultFile,
+			10,
+			ExceptionDeclarationSniff::CODE_NOT_CHAINABLE,
+			'Exception is not chainable. It must have optional \Throwable as last constructor argument.'
+		);
+	}
+
+	public function testExceptionWithChainableConstructorIsChainable()
+	{
+		$resultFile = $this->checkFile(__DIR__ . '/data/ChainableConstructorException.php');
+
+		$this->assertNoSniffError($resultFile, 10);
+	}
+
+	public function testExceptionWithNonchainableConstructorIsNotChainable()
+	{
+		$resultFile = $this->checkFile(__DIR__ . '/data/NonChainableConstructorException.php');
+
+		$this->assertSniffError(
+			$resultFile,
+			10,
+			ExceptionDeclarationSniff::CODE_NOT_CHAINABLE,
+			'Exception is not chainable. It must have optional \Throwable as last constructor argument and has "string".'
+		);
+	}
+
+	public function testExceptionWithConstructorWithoutParameterTypeHintIsNotChainable()
+	{
+		$resultFile = $this->checkFile(__DIR__ . '/data/NonChainableConstructorWithoutParameterTypehintException.php');
+
+		$this->assertSniffError(
+			$resultFile,
+			10,
+			ExceptionDeclarationSniff::CODE_NOT_CHAINABLE,
+			'Exception is not chainable. It must have optional \Throwable as last constructor argument and has none.'
+		);
+	}
+
 }
