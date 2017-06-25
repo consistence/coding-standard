@@ -22,7 +22,15 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		parent::__construct($name, $data, $dataName);
 	}
 
-	protected function checkFile(string $filePath): PhpCsFile
+	/**
+	 * @param string $filePath
+	 * @param mixed[] $sniffProperties
+	 * @return \PHP_CodeSniffer\Files\File
+	 */
+	protected function checkFile(
+		string $filePath,
+		array $sniffProperties = []
+	): PhpCsFile
 	{
 		if (!is_readable($filePath)) {
 			throw new \Exception(sprintf(
@@ -37,6 +45,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		]);
 
 		$codeSniffer->init();
+
+		if (count($sniffProperties) > 0) {
+			$codeSniffer->ruleset->ruleset[$this->getSniffName()]['properties'] = $sniffProperties;
+		}
 
 		$codeSniffer->ruleset->sniffs = [$this->getSniffClassName() => $this->getSniffClassName()];
 		$codeSniffer->ruleset->populateTokenListeners();

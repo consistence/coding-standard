@@ -15,6 +15,10 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 
 	const CODE_NOT_ENDING_WITH_EXCEPTION = 'NotEndingWithException';
 	const CODE_NOT_CHAINABLE = 'NotChainable';
+	const CODE_INCORRECT_EXCEPTION_DIRECTORY = 'IncorrectExceptionDirectory';
+
+	/** @var string */
+	public $exceptionsDirectoryName = 'exceptions';
 
 	/**
 	 * @return int[]
@@ -44,6 +48,8 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 
 		$this->checkExceptionName($phpcsFile, $classPointer);
 
+		$this->checkExceptionDirectoryName($phpcsFile, $classPointer);
+
 		$this->checkThatExceptionIsChainable($phpcsFile, $classPointer);
 	}
 
@@ -55,6 +61,28 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 				'Exception class name "%s" must end with "Exception".',
 				$className
 			), $classPointer, self::CODE_NOT_ENDING_WITH_EXCEPTION);
+		}
+	}
+
+	private function checkExceptionDirectoryName(PhpCsFile $phpcsFile, int $classPointer)
+	{
+		$filename = $phpcsFile->getFilename();
+
+		// normalize path for Windows (PHP_CodeSniffer detects it with backslashes on Windows)
+		$filename = str_replace('\\', '/', $filename);
+
+		$pathInfo = pathinfo($filename);
+		$pathSegments = explode('/', $pathInfo['dirname']);
+
+		$exceptionDirectoryName = array_pop($pathSegments);
+
+		if ($exceptionDirectoryName !== $this->exceptionsDirectoryName) {
+			$phpcsFile->addError(sprintf(
+				'Exception file "%s" must be placed in "%s" directory (is in "%s").',
+				$pathInfo['basename'],
+				$this->exceptionsDirectoryName,
+				$exceptionDirectoryName
+			), $classPointer, self::CODE_INCORRECT_EXCEPTION_DIRECTORY);
 		}
 	}
 
