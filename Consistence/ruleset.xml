@@ -155,7 +155,7 @@
 	<rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
 	<rule ref="SlevomatCodingStandard.Classes.UnusedPrivateElements"/>
 	<rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration"/>
-	<rule ref="SlevomatCodingStandard.ControlStructures.YodaComparison"/>
+	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
 	<rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
 	<rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly"/>
 	<rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
