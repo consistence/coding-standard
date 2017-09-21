@@ -24,6 +24,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
 	protected function checkFile(string $filePath): PhpCsFile
 	{
+		if (!is_readable($filePath)) {
+			throw new \Exception(sprintf(
+				'File "%s" is not readable',
+				$filePath
+			));
+		}
+
 		$codeSniffer = new PhpCsRunner();
 		$codeSniffer->config = new PhpCsConfig([
 			'-s', // showSources must be on, so that errors are recorded
