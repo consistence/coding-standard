@@ -27,7 +27,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testValidClassNameThatExtendsCustomException()
@@ -36,7 +36,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testAbstractExceptionWithValidNameException()
@@ -45,7 +45,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testAbstractClassWithInvalidExceptionName()
@@ -68,7 +68,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testClassThatExtendsRegularClass()
@@ -77,7 +77,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testInterfaceThatDoesNotExtendAnything()
@@ -86,7 +86,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testInterfaceThatDoesNotExtendAnythingException()
@@ -95,7 +95,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testInterfaceThatExtendsException()
@@ -104,7 +104,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testInterfaceThatExtendsExceptionIncorrectName()
@@ -141,7 +141,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 10);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testExceptionWithCustomExceptionArgumentIsChainable()
@@ -150,7 +150,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 10);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testExceptionWithErrorArgumentIsChainable()
@@ -159,7 +159,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 10);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testExceptionWithNonchainableConstructorIsNotChainable()
@@ -196,7 +196,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	/**
@@ -209,7 +209,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 			'exceptionsDirectoryName' => 'data',
 		]);
 
-		$this->assertNoSniffError($resultFile, 7);
+		$this->assertNoSniffErrorInFile($resultFile);
 	}
 
 	public function testExceptionIsPlacedInIncorrectDirectory()

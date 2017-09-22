@@ -147,6 +147,40 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
+	protected function assertNoSniffErrorInFile(PhpCsFile $file)
+	{
+		$errorsForFile = $file->getErrors();
+
+		$this->assertEmpty($errorsForFile, sprintf(
+			'No errors expected, but %d errors found: %s%s%s%s',
+			count($errorsForFile),
+			PHP_EOL,
+			PHP_EOL,
+			$this->getFormattedErrorsForFile($errorsForFile),
+			PHP_EOL
+		));
+	}
+
+	/**
+	 * @param mixed[][][][] $errorsForFile
+	 * @return string
+	 */
+	private function getFormattedErrorsForFile(array $errorsForFile): string
+	{
+		$message = '';
+		foreach ($errorsForFile as $line => $errorsForPossition) {
+			$message .= sprintf(
+				'%d:%s%s%s',
+				$line,
+				PHP_EOL,
+				$this->getFormattedErrorsOnLine($errorsForFile, $line),
+				PHP_EOL
+			);
+		}
+
+		return $message;
+	}
+
 	/**
 	 * @param mixed[][][][] $errorsForFile
 	 * @param int $line
