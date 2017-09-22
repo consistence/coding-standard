@@ -116,6 +116,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		if (
 			$lastArgument->getTypeHint() !== '\Throwable'
 			&& !StringHelper::endsWith($lastArgument->getTypeHint(), 'Exception')
+			&& !StringHelper::endsWith($lastArgument->getTypeHint(), 'Error')
 		) {
 			$phpcsFile->addError(sprintf(
 				'Exception is not chainable. It must have optional \Throwable as last constructor argument and has "%s".',
