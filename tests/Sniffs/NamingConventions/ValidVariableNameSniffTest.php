@@ -14,27 +14,27 @@ class ValidVariableNameSniffTest extends \Consistence\Sniffs\TestCase
 		return $this->checkFile(__DIR__ . '/data/FooClass.php');
 	}
 
-	public function testValidVariable()
+	public function testValidVariable(): void
 	{
 		$this->assertNoSniffError($this->getFileReport(), 12);
 	}
 
-	public function testNotCamelCaps()
+	public function testNotCamelCaps(): void
 	{
 		$this->assertSniffError($this->getFileReport(), 13, ValidVariableNameSniff::CODE_CAMEL_CAPS, 'incorrect_variable');
 	}
 
-	public function testVariableOnObject()
+	public function testVariableOnObject(): void
 	{
 		$this->assertNoSniffError($this->getFileReport(), 14);
 	}
 
-	public function testVariableOnClass()
+	public function testVariableOnClass(): void
 	{
 		$this->assertNoSniffError($this->getFileReport(), 15);
 	}
 
-	public function testPhpReservedVariables()
+	public function testPhpReservedVariables(): void
 	{
 		$this->assertNoSniffError($this->getFileReport(), 16);
 	}

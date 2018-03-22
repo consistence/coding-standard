@@ -17,7 +17,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param mixed[] $data
 	 * @param string $dataName
 	 */
-	public function __construct(string $name = null, array $data = [], string $dataName = '')
+	public function __construct(?string $name = null, array $data = [], string $dataName = '')
 	{
 		parent::__construct($name, $data, $dataName);
 	}
@@ -81,13 +81,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return substr(get_class($this), 0, -strlen('Test'));
 	}
 
-	/**
-	 * @param \PHP_CodeSniffer\Files\File $resultFile
-	 * @param int $line
-	 * @param string $code code used inside sniff to indicate error type
-	 * @param string|null $message match part of text in error message
-	 */
-	protected function assertSniffError(PhpCsFile $resultFile, int $line, string $code, string $message = null)
+	protected function assertSniffError(PhpCsFile $resultFile, int $line, string $code, ?string $message = null): void
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertTrue(
@@ -116,7 +110,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param string|null $message
 	 * @return bool
 	 */
-	private function hasError(array $errorsForLine, string $code, string $message = null): bool
+	private function hasError(iterable $errorsForLine, string $code, ?string $message = null): bool
 	{
 		foreach ($errorsForLine as $errorsForPosition) {
 			foreach ($errorsForPosition as $error) {
@@ -132,7 +126,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		return false;
 	}
 
-	protected function assertNoSniffError(PhpCsFile $resultFile, int $line)
+	protected function assertNoSniffError(PhpCsFile $resultFile, int $line): void
 	{
 		$errors = $resultFile->getErrors();
 		$this->assertFalse(
@@ -147,7 +141,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		);
 	}
 
-	protected function assertNoSniffErrorInFile(PhpCsFile $file)
+	protected function assertNoSniffErrorInFile(PhpCsFile $file): void
 	{
 		$errorsForFile = $file->getErrors();
 

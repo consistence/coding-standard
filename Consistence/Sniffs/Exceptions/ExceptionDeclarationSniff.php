@@ -13,9 +13,9 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
-	const CODE_NOT_ENDING_WITH_EXCEPTION = 'NotEndingWithException';
-	const CODE_NOT_CHAINABLE = 'NotChainable';
-	const CODE_INCORRECT_EXCEPTION_DIRECTORY = 'IncorrectExceptionDirectory';
+	public const CODE_NOT_ENDING_WITH_EXCEPTION = 'NotEndingWithException';
+	public const CODE_NOT_CHAINABLE = 'NotChainable';
+	public const CODE_INCORRECT_EXCEPTION_DIRECTORY = 'IncorrectExceptionDirectory';
 
 	/** @var string */
 	public $exceptionsDirectoryName = 'exceptions';
@@ -35,7 +35,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $classPointer
 	 */
-	public function process(PhpCsFile $phpcsFile, $classPointer)
+	public function process(PhpCsFile $phpcsFile, $classPointer): void
 	{
 		$extendedClassName = $phpcsFile->findExtendedClassName($classPointer);
 		if ($extendedClassName === false) {
@@ -53,7 +53,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		$this->checkThatExceptionIsChainable($phpcsFile, $classPointer);
 	}
 
-	private function checkExceptionName(PhpCsFile $phpcsFile, int $classPointer)
+	private function checkExceptionName(PhpCsFile $phpcsFile, int $classPointer): void
 	{
 		$className = ClassHelper::getName($phpcsFile, $classPointer);
 		if (!StringHelper::endsWith($className, 'Exception')) {
@@ -64,7 +64,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		}
 	}
 
-	private function checkExceptionDirectoryName(PhpCsFile $phpcsFile, int $classPointer)
+	private function checkExceptionDirectoryName(PhpCsFile $phpcsFile, int $classPointer): void
 	{
 		$filename = $phpcsFile->getFilename();
 
@@ -86,7 +86,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		}
 	}
 
-	private function checkThatExceptionIsChainable(PhpCsFile $phpcsFile, int $classPointer)
+	private function checkThatExceptionIsChainable(PhpCsFile $phpcsFile, int $classPointer): void
 	{
 		$constructorPointer = $this->findConstructorMethodPointer($phpcsFile, $classPointer);
 		if ($constructorPointer === null) {
@@ -126,12 +126,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 		}
 	}
 
-	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $classPointer
-	 * @return int|null
-	 */
-	private function findConstructorMethodPointer(PhpCsFile $phpcsFile, int $classPointer)
+	private function findConstructorMethodPointer(PhpCsFile $phpcsFile, int $classPointer): ?int
 	{
 		$functionPointerToScan = $classPointer;
 		while (($functionPointer = TokenHelper::findNext($phpcsFile, T_FUNCTION, $functionPointerToScan)) !== null) {

@@ -7,7 +7,7 @@ namespace Consistence\Sniffs\NamingConventions;
 class FooClass
 {
 
-	public function fooMethod()
+	public function fooMethod(): void
 	{
 		$correctVariable;
 		$incorrect_variable;

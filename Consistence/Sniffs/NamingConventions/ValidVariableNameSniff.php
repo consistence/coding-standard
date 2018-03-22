@@ -10,7 +10,7 @@ use PHP_CodeSniffer\Util\Common as PhpCsUtil;
 class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSniff
 {
 
-	const CODE_CAMEL_CAPS = 'NotCamelCaps';
+	public const CODE_CAMEL_CAPS = 'NotCamelCaps';
 
 	/** @var string[] */
 	private static $phpReservedVars = [
@@ -29,7 +29,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSni
 	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processVariable(PhpCsFile $file, $stackPointer)
+	protected function processVariable(PhpCsFile $file, $stackPointer): void
 	{
 		$tokens = $file->getTokens();
 		$varName = ltrim($tokens[$stackPointer]['content'], '$');
@@ -56,7 +56,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSni
 	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processMemberVar(PhpCsFile $file, $stackPointer)
+	protected function processMemberVar(PhpCsFile $file, $stackPointer): void
 	{
 		// handled by PSR2.Classes.PropertyDeclaration
 	}
@@ -67,7 +67,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSni
 	 * @param \PHP_CodeSniffer\Files\File $file
 	 * @param int $stackPointer position of the double quoted string
 	 */
-	protected function processVariableInString(PhpCsFile $file, $stackPointer)
+	protected function processVariableInString(PhpCsFile $file, $stackPointer): void
 	{
 		// Consistence standard does not allow variables in strings, handled by Squiz.Strings.DoubleQuoteUsage
 	}
