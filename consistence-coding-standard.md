@@ -255,6 +255,18 @@ class Foo
 
 * Interfaces are never prefixed with `I`.
 
+### Scalar types
+
+* Short type names are used in code (`int`, `bool`). This also applies to PHP functions which offer both variants.
+
+```php
+<?php
+
+if (!is_int($foo)) {
+	return (int) $foo;
+}
+```
+
 Variables
 ---------
 
@@ -536,16 +548,6 @@ Expressions
 -----------
 
 * After all operators, there is one space. Before operators, there is one space too, unless it is on the beginning of a line.
-* Short type names are used in code (`int`, `bool`). This also applies to PHP functions which offer both variants.
-
-```php
-<?php
-
-if (!is_int($foo)) {
-	return (int) $foo;
-}
-```
-
 * Logical operators `&&` and `||` are always used instead of `and` and `or`.
 * All keywords are lowercase, as well as `true`, `false` and `null`.
 * Strict comparisons are used by default (`===`), if there is need for `==`, usually a comment should be given explaining situation.
