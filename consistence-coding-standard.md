@@ -553,6 +553,7 @@ Expressions
 * All keywords are lowercase, as well as `true`, `false` and `null`.
 * Strict comparisons are used by default (`===`), if there is need for `==`, usually a comment should be given explaining situation.
   * Magic PHP type conversions should be avoided - WRONG: `($foo)`, CORRECT: `($foo !== null)` - only expressions already containing boolean values should be written in `($foo)` form.
+  * The same applies for `empty` function, so it is forbidden.
 * [Yoda conditions](http://en.wikipedia.org/wiki/Yoda_conditions) should not be used.
 * If expression needs to be written on multiple lines, operators belong on the beginning of the line.
 
