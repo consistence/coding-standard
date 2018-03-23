@@ -592,6 +592,7 @@ new Foo();
 ```
 
 * There is one space after type cast and no space inside the parentheses.
+  * `(binary)` and `(unset)` casts are forbidden.
 * For increments and decrements respective operators `++`/`--` are used instead of "manual" addition/subtraction.
 * All static symbols should be accessed only with `::`, never using `$this`.
 * `echo`, `print`, ... allowing both `echo('...')` and `echo ''` syntax are always used without parentheses and with one space after the keyword.
