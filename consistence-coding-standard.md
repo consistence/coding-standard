@@ -266,6 +266,7 @@ if (!is_int($foo)) {
 	return (int) $foo;
 }
 ```
+* `float` is always used instead of `double` or `real`. This also applies to PHP functions which offer both variants.
 
 Variables
 ---------
@@ -782,7 +783,6 @@ List of allowed types (long variants are used):
 * `bool`
 * `string`
 * `float`
-* `double`
 * `resource`
 * `null`
 * `object`
