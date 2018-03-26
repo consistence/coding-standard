@@ -370,35 +370,6 @@ new X(
 ```php
 <?php
 
-// for PHP 7.0
-
-class X
-{
-
-	/**
-	 * @param \Foo $a required type argument
-	 * @param \Foo|null $b required argument, but nullable type needed
-	 * @param string $c required scalar argument
-	 * @param string|null $d required argument with nullable scalar
-	 * @param string $e optional nullable scalar argument
-	 * @param string|null $f optional nullable scalar argument
-	 */
-	public function __construct(
-		Foo $a,
-		Foo $b = null,
-		string $c,
-		$d,
-		string $e = '',
-		string $f = null
-	)
-	{
-		// ...
-	}
-
-}
-
-// or with PHP 7.1+
-
 class X
 {
 
@@ -894,8 +865,6 @@ $foo = $container->getService('foo');
     * If a method has arguments type hinted with types (classes, interfaces) and no return value it is omitted.
     * If a method has an argument without typehint, PHPDoc is present.
     * If a method has an array argument, PHPDoc is present.
-    * If a method has return value, PHPDoc is present.
-      * This is valid only until return type hints will be introduced in PHP 7.
 
 ### Constants
 

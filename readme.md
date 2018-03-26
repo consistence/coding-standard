@@ -20,8 +20,6 @@ Automatic checks of this standard are implemented as sniffs for [PHP_CodeSniffer
 
 These checks also include some code analysis tools, such as detecting unreachable code etc. These are not part of the standard, but should be helpful.
 
-> Note that although the checks are allowed to run under PHP 7, the composition of CS Sniffs expects PHP 5 code. Please report any unexpected behavior in issues.
-
 Stability
 ---------
 
