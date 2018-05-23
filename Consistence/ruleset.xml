@@ -75,6 +75,7 @@
 	<rule ref="SlevomatCodingStandard.Commenting.EmptyComment"/>
 	<rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration"/>
 	<rule ref="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
+	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowEmpty"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses"/>
 	<rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses"/>
