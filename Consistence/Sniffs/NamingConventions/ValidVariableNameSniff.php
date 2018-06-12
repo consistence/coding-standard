@@ -13,7 +13,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSni
 	public const CODE_CAMEL_CAPS = 'NotCamelCaps';
 
 	/** @var string[] */
-	private static $phpReservedVars = [
+	private static $phpReservedVariables = [
 		'_SERVER',
 		'_GET',
 		'_POST',
@@ -34,7 +34,7 @@ class ValidVariableNameSniff extends \PHP_CodeSniffer\Sniffs\AbstractVariableSni
 		$tokens = $file->getTokens();
 		$varName = ltrim($tokens[$stackPointer]['content'], '$');
 
-		if (in_array($varName, self::$phpReservedVars, true)) {
+		if (in_array($varName, self::$phpReservedVariables, true)) {
 			return; // skip PHP reserved vars
 		}
 
