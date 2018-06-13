@@ -40,6 +40,11 @@
 			<property name="allowMultiline" value="true"/>
 		</properties>
 	</rule>
+	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
+		<properties>
+			<property name="ignoreNewlines" value="true"/>
+		</properties>
+	</rule>
 	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
 	<rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
 	<rule ref="Generic.WhiteSpace.ScopeIndent">
