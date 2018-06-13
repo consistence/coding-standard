@@ -34,6 +34,7 @@
 	<rule ref="Generic.PHP.ForbiddenFunctions"/>
 	<rule ref="Generic.PHP.LowerCaseConstant"/>
 	<rule ref="Generic.PHP.LowerCaseKeyword"/>
+	<rule ref="Generic.PHP.LowerCaseType"/>
 	<rule ref="Generic.Strings.UnnecessaryStringConcat">
 		<properties>
 			<property name="allowMultiline" value="true"/>
