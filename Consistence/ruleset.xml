@@ -137,6 +137,14 @@
 	<rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
 	<rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
+	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+		<properties>
+			<property name="allAnnotationsAreUseful" value="true"/>
+			<property name="traversableTypeHints" type="array">
+				<element value="Traversable"/>
+			</property>
+		</properties>
+	</rule>
 	<rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing"/>
 	<rule ref="SlevomatCodingStandard.Types.EmptyLinesAroundTypeBraces"/>
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing">

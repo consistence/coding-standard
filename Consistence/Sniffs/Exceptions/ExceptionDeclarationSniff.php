@@ -32,6 +32,8 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	}
 
 	/**
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+	 *
 	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $classPointer
 	 */
