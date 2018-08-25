@@ -94,7 +94,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 			sprintf(
 				'Expected code %s%s, but not found on line %s.%sErrors found on this line:%s%s%s',
 				$expectedCode,
-				($message !== null) ? sprintf(' with message "%s"', $message) : '',
+				$message !== null ? sprintf(' with message "%s"', $message) : '',
 				$line,
 				PHP_EOL,
 				PHP_EOL,
@@ -162,7 +162,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	private function getFormattedErrorsForFile(array $errorsForFile): string
 	{
 		$message = '';
-		foreach ($errorsForFile as $line => $errorsForPossition) {
+		foreach (array_keys($errorsForFile) as $line) {
 			$message .= sprintf(
 				'%d:%s%s%s',
 				$line,
@@ -186,8 +186,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 			return '';
 		}
 
-		return implode(PHP_EOL, array_map(function (array $errorsForPosition) {
-			return implode(PHP_EOL, array_map(function (array $errorForPosition) {
+		return implode(PHP_EOL, array_map(static function (array $errorsForPosition) {
+			return implode(PHP_EOL, array_map(static function (array $errorForPosition) {
 				return sprintf("\t" . '%s: %s', $errorForPosition['source'], $errorForPosition['message']);
 			}, $errorsForPosition));
 		}, $errorsForFile[$line]));
