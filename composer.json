@@ -16,10 +16,10 @@
 		"slevomat/coding-standard": "~4.7"
 	},
 	"require-dev": {
-		"jakub-onderka/php-console-highlighter": "0.3.2",
+		"jakub-onderka/php-console-highlighter": "0.4",
 		"jakub-onderka/php-parallel-lint": "1.0",
 		"phing/phing": "2.16.1",
-		"phpunit/phpunit": "7.3.2"
+		"phpunit/phpunit": "7.5.1"
 	},
 	"autoload": {
 		"psr-4": {
