@@ -3,10 +3,10 @@
 	<rule ref="../Consistence/ruleset.xml"/>
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
-			<property name="rootNamespaces" type="array" value="
-				Consistence => Consistence,
-				tests => Consistence,
-			"/>
+			<property name="rootNamespaces" type="array">
+				<element key="Consistence" value="Consistence"/>
+				<element key="tests" value="Consistence"/>
+			</property>
 		</properties>
 	</rule>
 </ruleset>
