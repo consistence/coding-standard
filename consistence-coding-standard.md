@@ -19,7 +19,7 @@ use Foo\Xml\Bar;
 General formatting conventions
 ------------------------------
 
-* Tab indentation is used everywhere. All indentation using spaces is forbidden.
+* Tab indentation is used.
 * Files end with a single blank line `\n`.
 * Unix-style (LF) line endings `\n` are used.
 * There is no trailing whitespace.
@@ -741,7 +741,7 @@ private $foo;
  * @JoinTable(
  *   name="users_phonenumbers",
  *   joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
- *   inverseJoinColumns={@JoinColumn(name="phonenumber_id", referencedColumnName="id", unique=true)}
+ *   inverseJoinColumns={@JoinColumn(name="phonenumber_id", referencedColumnName="id", unique=true)},
  * )
  * @Foo
  **/
