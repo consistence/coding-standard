@@ -9,7 +9,12 @@
 			"/>
 		</properties>
 	</rule>
-	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+	<rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
+		<properties>
+			<property name="enableObjectTypeHint" value="false"/><!-- requires 7.2+ -->
+		</properties>
+	</rule>
+	<rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
 		<properties>
 			<property name="enableObjectTypeHint" value="false"/><!-- requires 7.2+ -->
 		</properties>
