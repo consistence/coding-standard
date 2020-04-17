@@ -59,7 +59,9 @@
 	<rule ref="PSR1.Classes.ClassDeclaration"/>
 	<rule ref="PSR1.Files.SideEffects"/>
 	<rule ref="PSR1.Methods.CamelCapsMethodName"/>
-	<rule ref="PSR2.Classes.PropertyDeclaration"/>
+	<rule ref="PSR2.Classes.PropertyDeclaration">
+		<exclude name="PSR2.Classes.PropertyDeclaration.Multiple"/><!-- handled by fixable SlevomatCodingStandard.Classes.DisallowMultiPropertyDefinition.DisallowedMultiPropertyDefinition -->
+	</rule>
 	<rule ref="PSR2.ControlStructures.ControlStructureSpacing">
 		<exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/><!-- we want to put first expression of multiline condition on next line -->
 	</rule>
@@ -78,6 +80,7 @@
 	<rule ref="PSR2.Namespaces.UseDeclaration"/>
 	<rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma"/>
 	<rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
+	<rule ref="SlevomatCodingStandard.Classes.DisallowMultiPropertyDefinition"/>
 	<rule ref="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces"/>
 	<rule ref="SlevomatCodingStandard.Classes.UnusedPrivateElements"/>
 	<rule ref="SlevomatCodingStandard.Commenting.EmptyComment"/>
