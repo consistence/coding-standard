@@ -5,10 +5,10 @@ sudo: false
 php:
   - 7.2
   - 7.3
+  - 7.4
   - nightly
 
 env:
-  - # default environment without variables
   - COMPOSER_DEPENDENCIES_OPTIONS="--prefer-lowest --prefer-stable"
 
 matrix:
