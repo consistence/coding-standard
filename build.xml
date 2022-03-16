@@ -27,13 +27,6 @@
 		tests
 	"/>
 
-	<target name="ci-build" depends="
-		composer-validate,
-		phplint,
-		cs,
-		ci-tests
-	"/>
-
 	<target name="ci-tests">
 		<exec
 			executable="${path.phpunit.executable}"
