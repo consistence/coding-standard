@@ -27,21 +27,6 @@
 		tests
 	"/>
 
-	<target name="ci-tests">
-		<exec
-			executable="${path.phpunit.executable}"
-			logoutput="true"
-			passthru="true"
-			checkreturn="true"
-		>
-			<arg value="--configuration"/>
-			<arg value="${path.phpunit.configuration}"/>
-			<arg value="--coverage-clover"/>
-			<arg value="${path.tests.coverage.clover}"/>
-			<arg path="${path.tests}"/>
-		</exec>
-	</target>
-
 	<target name="composer" depends="composer-validate">
 		<exec
 			executable="${path.composer.executable}"
@@ -103,6 +88,8 @@
 		>
 			<arg value="--configuration"/>
 			<arg value="${path.phpunit.configuration}"/>
+			<arg value="--coverage-clover"/>
+			<arg value="${path.tests.coverage.clover}"/>
 			<arg path="${path.tests}"/>
 		</exec>
 	</target>
