@@ -773,7 +773,7 @@ Multiple different types are separated with `|`.
 
 * Written as `<type>[]`.
 * If the values are of more than one type, then `mixed[]` is used (also if there is no knowledge about the types).
-* If associative array is expected (or a Map), in description, there should be description of used format, such as `string[] $names format: lastName(string) => firstName (string)`.
+* If associative array is expected (or a Map), in description, there should be description of used format, such as `string[] $names format: lastName (string) => firstName (string)`.
 * If there are more nested arrays/collections, this is expressed with more `[]`, e.g. `integer[][]` means array of arrays of integers.
 
 #### Type
