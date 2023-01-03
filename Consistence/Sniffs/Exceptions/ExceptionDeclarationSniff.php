@@ -17,8 +17,7 @@ class ExceptionDeclarationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 	public const CODE_NOT_CHAINABLE = 'NotChainable';
 	public const CODE_INCORRECT_EXCEPTION_DIRECTORY = 'IncorrectExceptionDirectory';
 
-	/** @var string */
-	public $exceptionsDirectoryName = 'exceptions';
+	public string $exceptionsDirectoryName = 'exceptions';
 
 	/**
 	 * @return int[]
