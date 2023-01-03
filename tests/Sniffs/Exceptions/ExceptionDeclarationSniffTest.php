@@ -205,7 +205,7 @@ class ExceptionDeclarationSniffTest extends \Consistence\Sniffs\TestCase
 	public function testExceptionIsPlacedInCorrectDirectoryOnWindows(): void
 	{
 		// PHP_CodeSniffer detects the path with backslashes on Windows
-		$resultFile = $this->checkFile(__DIR__ . '\data\ValidNameException.php', [
+		$resultFile = $this->checkFile(__DIR__ . '/data/ValidNameException.php', [
 			'exceptionsDirectoryName' => 'data',
 		]);
 
