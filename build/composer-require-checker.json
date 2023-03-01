@@ -1,0 +1,33 @@
+{
+	"php-core-extensions" : [
+		"Core",
+		"Phar",
+		"Reflection",
+		"SPL",
+		"date",
+		"pcre",
+		"standard"
+	],
+	"scan-files" : [],
+	"symbol-whitelist" : [
+		"PHP_CodeSniffer\\Sniffs\\AbstractVariableSniff",
+		"PHP_CodeSniffer\\Sniffs\\Sniff",
+		"PHP_CodeSniffer\\Files\\File",
+		"PHP_CodeSniffer\\Util\\Common",
+		"array",
+		"bool",
+		"callable",
+		"false",
+		"float",
+		"int",
+		"iterable",
+		"null",
+		"object",
+		"parent",
+		"self",
+		"static",
+		"string",
+		"true",
+		"void"
+	]
+}
