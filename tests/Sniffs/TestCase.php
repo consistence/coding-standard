@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Consistence\Sniffs;
 
+use PHPUnit\Framework\Assert;
 use PHP_CodeSniffer\Config as PhpCsConfig;
 use PHP_CodeSniffer\Files\File as PhpCsFile;
 use PHP_CodeSniffer\Files\LocalFile as PhpCsLocalFile;
@@ -84,12 +85,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	protected function assertSniffError(PhpCsFile $resultFile, int $line, string $code, ?string $message = null): void
 	{
 		$errors = $resultFile->getErrors();
-		$this->assertTrue(
+		Assert::assertTrue(
 			isset($errors[$line]),
 			sprintf('Expected error on line %s, but none occurred', $line)
 		);
 		$expectedCode = $this->getSniffName() . '.' . $code;
-		$this->assertTrue(
+		Assert::assertTrue(
 			$this->hasError($errors[$line], $expectedCode, $message),
 			sprintf(
 				'Expected code %s%s, but not found on line %s.%sErrors found on this line:%s%s%s',
@@ -129,7 +130,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	protected function assertNoSniffError(PhpCsFile $resultFile, int $line): void
 	{
 		$errors = $resultFile->getErrors();
-		$this->assertFalse(
+		Assert::assertFalse(
 			isset($errors[$line]),
 			sprintf(
 				'Expected no error on line %s, but errors found:%s%s%s',
@@ -145,7 +146,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	{
 		$errorsForFile = $file->getErrors();
 
-		$this->assertEmpty($errorsForFile, sprintf(
+		Assert::assertEmpty($errorsForFile, sprintf(
 			'No errors expected, but %d errors found: %s%s%s%s',
 			count($errorsForFile),
 			PHP_EOL,
