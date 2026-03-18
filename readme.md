@@ -16,7 +16,7 @@ The main objectives of this standard are:
 Automatic checks
 ----------------
 
-Automatic checks of this standard are implemented as sniffs for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) (`phpcs`), but not all the rules are checked yet. PHP_CodeSniffer contains also tool for automatic correction of certain errors `phpcbf`, but this tool is also not 100% reliable - results produced by this may not conform to this standard.
+Automatic checks of this standard are implemented as sniffs for [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) (`phpcs`), but not all the rules are checked yet. PHP_CodeSniffer contains also tool for automatic correction of certain errors `phpcbf`, but this tool is also not 100% reliable - results produced by this may not conform to this standard.
 
 These checks also include some code analysis tools, such as detecting unreachable code etc. These are not part of the standard, but should be helpful.
 
@@ -51,4 +51,4 @@ Then run `phpcs` with this standard:
 vendor/bin/phpcs --standard=vendor/consistence/coding-standard/Consistence/ruleset.xml --extensions=php --encoding=utf-8 -sp src
 ```
 
-For further usage options see the [PHP_CodeSniffer documentation](https://github.com/squizlabs/PHP_CodeSniffer/wiki).
+For further usage options see the [PHP_CodeSniffer documentation](https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki).
